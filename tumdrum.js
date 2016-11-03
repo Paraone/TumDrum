@@ -8,7 +8,7 @@ $(document).ready(function() {
   var sound = null; // holds audio for playback controls
   var timerInterval = 4000; // interval to be used for player input
   var seqInterval = 1000; // interval to be use for sequence playback
-  var winPoint = 16;
+  var winPoint = 8;
 
   var getRand = function(min, max){ // gets random number from min to max
     var min = Math.ceil(min);
@@ -27,7 +27,7 @@ $(document).ready(function() {
 
   var gameOver = function(){//set game over que
     console.log('You lose.');
-    alert('You lose.');
+    // alert('You lose.');
   }
 
   var youWin = function(){// sets winner que
@@ -60,7 +60,9 @@ $(document).ready(function() {
   }
 
   var playSequence = function(seq){// plays the sequence in order
-    buttons.css('display', 'none');
+    // debugger;
+    buttons.css('display', 'none');// hide buttons so not to allow input during playback
+    $('#sprite').addClass('animate');
     for (let i = 0; i < seq.length; i++) {
       setTimeout(function(){
         if(i > 0){
@@ -68,12 +70,11 @@ $(document).ready(function() {
           sound.pause();
          sound.currentTime = 0;
        }
-        console.log('#'+(i+1)+': '+seq[i]);
         sound = $('#sound-'+seq[i]).get(0);
         sound.play();
         $('#btn-'+seq[i]).css({
-          'border' : '1px solid green',
-          'margin' : '4px'
+          'border' : '3px solid #ff5',
+          'margin' : '2px'
         });
         setTimeout(function(){
           $('#btn-'+seq[i]).css({
@@ -82,31 +83,28 @@ $(document).ready(function() {
           });
         }, 500);
         if(i === seq.length-1) {
-          console.log('Go!')
-          buttons.css('display', 'block');
-          setTimer(timerInterval);
+          $('#sprite').removeClass('animate');
+          buttons.css('display', 'block');//display buttons to allow input
+          setTimer(timerInterval);// set timer for input
         }
       }, i*seqInterval+seqInterval);
     }
   }
 
   var clickFunc = function(){
-    $(this).parent().css({
-      'border' : '1px solid blue',
-      'margin' : '4px'
-    });
     clearTimeout(playerTimeout);//stop timer
     timerRunning = false;
     inputs++; //increase input amount
-    if(inputs % 4 === 0){
-      timerInterval *= .9;
-      seqInterval *= .8;
-    }
+    if(inputs % 3 === 0) seqInterval *= .9;
     var btnId = $(this).parent().attr('id').split('').pop();
     sound = $('#sound-'+btnId).get(0);//get sound file
     sound.play(); // play sound
     playerSeq.push(Number(btnId));//store button number in playerSeq
     if(checkSeq(sequence, playerSeq)){// if playerSeq matches sequence
+    $(this).parent().css({
+      'border' : '3px solid green',
+      'margin' : '2px'
+    });
       if(sequence.length === inputs){// if # of inputs match sequence length
         if(inputs === winPoint){//if sequence length === winPoint you win; exit function;
           youWin();
@@ -120,6 +118,10 @@ $(document).ready(function() {
       setTimer(4000); //set timer between inputs
     }
     else{//if sequences do not match --> game over...
+      $(this).parent().css({
+      'border' : '3px solid red',
+      'margin' : '2px'
+    });
       gameOver();
       resetGame();
       playSequence(sequence);
@@ -127,7 +129,7 @@ $(document).ready(function() {
     }
   }
 
-  var init = function(){
+  var init = function(){// initialize game onclicks and set game in motion
   buttons.mousedown(clickFunc);
   buttons.mouseleave(function() {
     $(this).parent().css({

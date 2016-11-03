@@ -1,10 +1,16 @@
 body{
   padding:  0;
   margin:  0;
+  background:  #005;
+  color: white;
 }
 #stage{
-  width: 100%;
+  width: 80%;
+  height: 800px;
+  margin: 0 auto;
   text-align: center;
+  background: url('imgs/stage.jpg');
+  background-size: 100% 100%;
 }
 .btn{
   position: relative;
@@ -12,21 +18,21 @@ body{
   height: 100%;
 }
 #btn-0{
-  background: url('imgs/snare.jpeg');
+  background: url('imgs/snare.png');
   background-size: 100%;
 }
 #btn-1{
-  background: url('imgs/bass.jpg');
+  background: url('imgs/bass.png');
   background-size: 100%;
 
 }
 #btn-2{
-  background: url('imgs/cymbal.jpeg');
+  background: url('imgs/cymbal.png');
   background-size: 100%;
 
 }
 #btn-3{
-  background: url('imgs/hihat.jpeg');
+  background: url('imgs/hihat.png');
   background-size: 100%;
 
 }
@@ -43,7 +49,134 @@ body{
   margin:  0 auto;
 }
 #player, #sound, #round{
-  width: 200px;
+  width: 204px;
   display: inline-block;
-  background:  orange;
+}
+#player{
+  margin-top: 320px;
+  width: 204.5px;
+  height: 160px;
+  overflow: hidden;
+  /* background: url('imgs/drummer.png'); */
+}
+#player img{
+  position:  relative;
+  top: 0;
+  left: 0;
+}
+.animate{
+  animation: ani 3s steps(12) infinite;
+  -webkit-animation: ani 3s steps(12) infinite;
+}
+
+@keyframes ani {
+  0%{
+    left: 0%;
+    top: 0px;
+  }
+  100%{
+    left: -1190%;
+    top: 0;
+  }
+}
+
+@keyfames playdrums{
+  0%{
+    top: 0;
+    left: 0;
+  }
+  8%{
+    top: -204px;
+    left: 0;
+}
+  16%{
+    top: -408px;
+    left: 0;
+}
+  24%{
+    top: -612px;
+    left: 0;
+}
+  32%{
+    top: 0;
+    left: -160px;
+ }
+  40%{
+    top: -204px;
+    left: -160px;
+  }
+  48%{
+    top: -408px;
+    left: -160px;
+  }
+  56%{
+    top: -612px;
+    left: -160px;
+  }
+  67%{
+    top: 0px;
+    left: -320px;
+ }
+  78%{
+    top: -204px;
+    left: -320px;
+  }
+  89%{
+    top: -408px;
+    left: -320px;
+  }
+  100%{
+    top: -612px;
+    left: -320px;
+  }
+}
+@-webkit-keyfames playdrums{
+  0%{
+    top: 0;
+    left: 0;
+  }
+  8%{
+    top: -204px;
+    left: 0;
+}
+  16%{
+    top: -408px;
+    left: 0;
+}
+  24%{
+    top: -612px;
+    left: 0;
+}
+  32%{
+    top: 0;
+    left: -160px;
+ }
+  40%{
+    top: -204px;
+    left: -160px;
+  }
+  48%{
+    top: -408px;
+    left: -160px;
+  }
+  56%{
+    top: -612px;
+    left: -160px;
+  }
+  67%{
+    top: 0px;
+    left: -320px;
+ }
+  78%{
+    top: -204px;
+    left: -320px;
+  }
+  89%{
+    top: -408px;
+    left: -320px;
+  }
+  100%{
+    top: -612px;
+    left: -320px;
+  }
 }

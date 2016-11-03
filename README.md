@@ -23,7 +23,8 @@ Approach:
 
 Installation:
 	
-	TumDrum is ready to go right in the browser. just download the install folder and open index.html to get started.
+	TumDrum is ready to go right in the browser. just download the install folder 
+	and open index.html to get started.
 
 unsolved problems:
 	
@@ -38,5 +39,7 @@ user stories:
 
 MVP:
 	
-	at the most basic level. it is a Simon clone with background music. 4 buttons and a character at center stage on screen that will display a win or lose state and the option to play again.
+	at the most basic level. it is a Simon clone with background 
+	music. 4 buttons and a character at center stage on screen that will 
+	display a win or lose state and the option to play again.
 

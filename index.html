@@ -4,9 +4,28 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Tum Drum</title>
-  <link rel="stylesheet" href="">
+  <link rel="stylesheet" href="tumdrum.css">
 </head>
 <body>
+  <div id="stage">
+    <div id="sound">sound</div >
+    <div id="player"><img src="" alt="Player Here"></div>
+    <div id="round">round<br></div>
 
+    <div id="buttons">
+      <div class="btnHolder" id="btn-0"><div class="btn"></div></div>
+      <div class="botbtns">
+        <div class="btnHolder" id="btn-1"><div class="btn"></div></div>
+        <div class="btnHolder" id="btn-2"><div class="btn"></div></div>
+        <div class="btnHolder" id="btn-3"><div class="btn"></div></div>
+      </div>
+    </div id="buttons">
+  </div>
+  <audio src="sound/snare.mp3" id="sound-0"></audio>
+  <audio src="sound/bass.mp3" id="sound-1"></audio>
+  <audio src="sound/cymbal.mp3" id="sound-2"></audio>
+  <audio src="sound/hihat.mp3" id="sound-3"></audio>
+<script src="jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="tumdrum.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

@@ -1,0 +1,49 @@
+body{
+  padding:  0;
+  margin:  0;
+}
+#stage{
+  width: 100%;
+  text-align: center;
+}
+.btn{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+#btn-0{
+  background: url('imgs/snare.jpeg');
+  background-size: 100%;
+}
+#btn-1{
+  background: url('imgs/bass.jpg');
+  background-size: 100%;
+
+}
+#btn-2{
+  background: url('imgs/cymbal.jpeg');
+  background-size: 100%;
+
+}
+#btn-3{
+  background: url('imgs/hihat.jpeg');
+  background-size: 100%;
+
+}
+.btnHolder{
+  margin: 5px;
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  background-color: blue;
+}
+.buttons{
+  text-align: center;
+  width: 600px;
+  margin:  0 auto;
+}
+#player, #sound, #round{
+  width: 200px;
+  display: inline-block;
+  background:  orange;
+}

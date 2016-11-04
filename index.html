@@ -8,9 +8,13 @@
 </head>
 <body>
   <div id="stage">
-    <div id="sound">sound</div >
+    <div id="sideContent">
+      <div id="sound">sound on/off</div >
+      <div id="round">round: 1</div>
+      <div id="playbtn">Play</div>
+    </div>
+    <div id="status">&nbsp;</div>
     <div id="player" ><img src="imgs/drummer.png" alt="Player Here" id="sprite"></div>
-    <div id="round">round<br></div>
 
     <div id="buttons">
       <div class="btnHolder" id="btn-0"><div class="btn"></div></div>
@@ -19,13 +23,14 @@
         <div class="btnHolder" id="btn-2"><div class="btn"></div></div>
         <div class="btnHolder" id="btn-3"><div class="btn"></div></div>
       </div>
-    </div id="buttons">
+    </div>
   </div>
   <audio src="sound/snare.mp3" id="sound-0"></audio>
   <audio src="sound/bass.mp3" id="sound-1"></audio>
   <audio src="sound/cymbal.mp3" id="sound-2"></audio>
   <audio src="sound/hihat.mp3" id="sound-3"></audio>
-<script src="jquery.js" type="text/javascript" charset="utf-8"></script>
-<script src="tumdrum.js" type="text/javascript" charset="utf-8"></script>
+  <audio src="sound/TRAP.ogg" id="song"></audio>
+  <script src="jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="tumdrum.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

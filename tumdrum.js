@@ -1,5 +1,9 @@
 $(document).ready(function() {
   var buttons = $('.btn'); //array of buttons
+  var playbtn = $('#playbtn'); // starts sequence
+  var status = $('#status'); // display win/lose
+  var song = $('#song').get(0);
+  song.volume = .2;
   var sequence = []; //array of sequence to be followed
   var playerSeq = []; //array of user input
   var inputs = 0; // number of inputs
@@ -7,8 +11,10 @@ $(document).ready(function() {
   var timerRunning = false; //is timer running??
   var sound = null; // holds audio for playback controls
   var timerInterval = 4000; // interval to be used for player input
-  var seqInterval = 1000; // interval to be use for sequence playback
+  var seqInterval = 387*2; // interval to be use for sequence playback
   var winPoint = 8;
+
+
 
   var getRand = function(min, max){ // gets random number from min to max
     var min = Math.ceil(min);
@@ -19,20 +25,24 @@ $(document).ready(function() {
   var checkSeq = function(sequence, playerSeq){// checks to see if playerSeq follows sequence order
     var output = false;
     for (var i = 0; i < playerSeq.length; i++) {
-      output = (Number(sequence[i]) === Number(playerSeq[i]) ? true : false);
+      output = Number(sequence[i]) === Number(playerSeq[i]);
       if(!output) break;
     }
     return output;
   }
 
   var gameOver = function(){//set game over que
+    song.pause();
+    song.currentTime = 0;
     console.log('You lose.');
+    status.text('You lose.');
     // alert('You lose.');
   }
 
   var youWin = function(){// sets winner que
     console.log('You win.');
-    alert('You win!');
+    status.text('You win.');
+    // alert('You win!');
   }
 
   var resetGame = function(seq){// resets game variables for next round
@@ -40,9 +50,9 @@ $(document).ready(function() {
     playerSeq = [];
     if(!seq) {
       timerInterval = 4000; // interval to be used for player input
-      seqInterval = 1000; // interval to be use for sequence playback
       seq = []
     }
+    buttons.css('display', 'none');
     sequence = seq;
     sequence.push(getRand(0, 3));
     console.log('new sequence: '+sequence);
@@ -54,8 +64,8 @@ $(document).ready(function() {
     playerTimeout = setTimeout(function(){
       console.log('setTimer timed out');
       gameOver();
-      resetGame(seq);
-      playSequence(seq);
+      resetGame();
+      playbtn.show('slow');
     }, mils);
   }
 
@@ -81,7 +91,7 @@ $(document).ready(function() {
             'border' : 'none',
             'margin' : '5px'
           });
-        }, 500);
+        }, 250);
         if(i === seq.length-1) {
           $('#sprite').removeClass('animate');
           buttons.css('display', 'block');//display buttons to allow input
@@ -95,7 +105,7 @@ $(document).ready(function() {
     clearTimeout(playerTimeout);//stop timer
     timerRunning = false;
     inputs++; //increase input amount
-    if(inputs % 3 === 0) seqInterval *= .9;
+    // if(inputs % 3 === 0) seqInterval *= .9; // increases difficulty as rounds progress
     var btnId = $(this).parent().attr('id').split('').pop();
     sound = $('#sound-'+btnId).get(0);//get sound file
     sound.play(); // play sound
@@ -109,6 +119,7 @@ $(document).ready(function() {
         if(inputs === winPoint){//if sequence length === winPoint you win; exit function;
           youWin();
           resetGame();
+          playbtn.show('slow');
           return;
         }
         resetGame(sequence); //  keep sequence going
@@ -124,7 +135,7 @@ $(document).ready(function() {
     });
       gameOver();
       resetGame();
-      playSequence(sequence);
+      playbtn.show('slow');
       return;
     }
   }
@@ -151,8 +162,28 @@ $(document).ready(function() {
       sound.currentTime = 0;
     }
   });
+  // **************PLAY BUTTON *******************
+  playbtn.mousedown(function(event) {
+    $(this).css({
+      'background' : 'rgba(255, 255, 255, 1)'
+    });
+  });
+  playbtn.mouseup(function(event) {
+    status.text('');
+    song.play();
+    playSequence(sequence);
+    $(this).css({
+      'background' : 'rgba(255, 255, 255, .5)'
+    });
+    $(this).fadeOut('slow');
+  });
+  playbtn.mouseleave(function(event) {
+    $(this).css({
+      'background' : 'rgba(255, 255, 255, .5)'
+    });
+  });
   resetGame();
-  playSequence(sequence);
+  buttons.css('display', 'none');
   }
   init();
 });

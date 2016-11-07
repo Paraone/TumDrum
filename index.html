@@ -4,33 +4,105 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Tum Drum</title>
+  <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC|Fruktur|Nosifer|Stalinist+One" rel="stylesheet">
   <link rel="stylesheet" href="tumdrum.css">
 </head>
 <body>
+<header id="header" class="">
+  <div>
+   <h1><img src="imgs/snare.png" alt="Logo Here">Tum Drum</h1>
+  </div>
+  <nav>
+    <ul class="headerul">
+      <li class="headerli"><div class="navbtn">Home</a></li>
+      <li class="headerli"><div class="navbtn">Play</a></li>
+      <li class="headerli dropdown">
+        <div title="" class="dropbtn"><div class="">Options</a></div>
+        <ul class="dropContent">
+          <li class="navbtn">Controls</li>
+          <li class="navbtn">Audio</li>
+          <li class="navbtn">Difficulty</li>
+        </ul>
+      </li>
+      <li class="headerli"><div class="navbtn">About</a></li>
+      <li class="headerli"><div class="navbtn">Contact</a></li>
+    </ul>
+  </nav>
+</header><!-- /header -->
   <div id="stage">
-    <div id="sideContent">
-      <div id="sound">sound on/off</div >
-      <div id="round">round: 1</div>
-      <div id="playbtn">Play</div>
-    </div>
-    <div id="status">&nbsp;</div>
-    <div id="player" ><img src="imgs/drummer.png" alt="Player Here" id="sprite"></div>
 
-    <div id="buttons">
-      <div class="btnHolder" id="btn-0"><div class="btn"></div></div>
-      <div class="botbtns">
-        <div class="btnHolder" id="btn-1"><div class="btn"></div></div>
-        <div class="btnHolder" id="btn-2"><div class="btn"></div></div>
-        <div class="btnHolder" id="btn-3"><div class="btn"></div></div>
+    <div class="home page"><!-- Home Page -->
+      <h2>Welcome to Tum Drum</h2>
+      <div id="homeplay" class="navbtn">Play</div>
+      <img src="imgs/drummerhome.png" alt="">
+    </div><!-- Home Page -->
+
+    <div class="play page"><!-- Play Game -->
+      <div id="sideContainer">
+        <div id="sideContent">
+                  <div class="sound">Audio: ON</div >
+                  <div id="round">round: 1</div>
+        </div>
+        <div id="playbtn">play</div>
+     </div>
+          <div id="status">&nbsp;</div>
+          <div id="player" ><img src="imgs/drummer.png" alt="Player Here" id="sprite"></div>
+        <div id="buttons">
+          <div class="btnHolder" id="btn-0"><div class="btn"></div></div>
+          <div class="botbtns">
+            <div class="btnHolder" id="btn-1"><div class="btn"></div></div>
+            <div class="btnHolder" id="btn-2"><div class="btn"></div></div>
+            <div class="btnHolder" id="btn-3"><div class="btn"></div></div>
+          </div>
+        </div>
+    </div><!-- Play Page -->
+
+    <div class="about page">
+      <h2>About</h2>
+      <div class="textDisplay">
+        <p>
+          Tum Drum is a cross between Simon and Guitar hero.
+        </p>
+
+        <p>
+            You are a drummer. It's your time to perform! TumDrum follows all the basic rules of the game Simon with some added bonuses, including, a drum pad istead of some lame beeping buttons, A background song that gives a rhythm to the sequence you follow and animated sprites to show your progression in the game.
+        </p>
       </div>
     </div>
+
+    <div class="contact page">
+      <h2>Contact</h2>
+      <div class="textDisplay">
+        Marcos Wade<br><br>
+        marcoswade@gmail.com<br><br>
+        347.927.2728
+      </div>
+    </div>
+
+    <div class="controls page options">
+      <h2>Controls</h2>
+      <div class="textDisplay">Control option here...</div>
+    </div>
+
+    <div class="audio page">
+      <h2>Audio</h2>
+      <div class="sound textDisplay">Audio: ON</div >
+    </div>
+
+    <div class="difficulty page options">
+      <h2>Difficulty</h2>
+      <div id="diff" class="textDisplay">Difficulty: Easy</div>
+    </div>
   </div>
+  <footer>
+    <a class="navbtn">home</a> | <a class="navbtn">play</a> | <a class="navbtn">audio</a> | <a class="navbtn">controls</a> | <a class="navbtn">difficulty</a> | <a class="navbtn">about</a> | <a class="navbtn">contact</a> <span>Marcos Wade : GA Project-1 Nov. 2016</span>
+  </footer>
   <audio src="sound/snare.mp3" id="sound-0"></audio>
   <audio src="sound/bass.mp3" id="sound-1"></audio>
   <audio src="sound/cymbal.mp3" id="sound-2"></audio>
   <audio src="sound/hihat.mp3" id="sound-3"></audio>
   <audio src="sound/TRAP.ogg" id="song"></audio>
-  <script src="jquery.js" type="text/javascript" charset="utf-8"></script>
+  <audio src="sound/cheer.mp3" id="cheer"> <script src="jquery.js" type="text/javascript" charset="utf-8"></script>
   <script src="tumdrum.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

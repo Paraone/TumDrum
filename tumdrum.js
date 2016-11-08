@@ -90,35 +90,35 @@ $(document).ready(function() {
     // debugger;
     $('#round').text('Round: '+sequence.length);
     buttons.css('display', 'none');// hide buttons so not to allow input during playback
-    status.css('font-family', '"Stalinist One", helvetica');
-    status.text('Listen...');
-    $('#sprite').addClass('animate');
-    for (let i = 0; i < seq.length; i++) {
+    status.css('font-family', '"Stalinist One", helvetica');// set status styling
+    status.text('Listen...');//set status text
+    $('#sprite').addClass('animate');//animate sprite
+    for (let i = 0; i < seq.length; i++) {//set timeouts in motion
         setTimeout(function(){
-          if(i > 0 && audioOn){
+          if(i > 0 && audioOn){//if sound is playing reset sound
             sound = $('#sound-'+seq[i-1]).get(0);
             sound.pause();
            sound.currentTime = 0;
          }
-         if(audioOn){
+         if(audioOn){// if audioOn play sound
             sound = $('#sound-'+seq[i]).get(0);
             sound.play();
           }
-          $('#btn-'+seq[i]).css({
+          $('#btn-'+seq[i]).css({//change btn color
             'border' : '3px solid #ff5',
             'margin' : '2px'
           });
-          setTimeout(function(){
+          setTimeout(function(){//change btn color back in .25s
             $('#btn-'+seq[i]).css({
               'border' : 'none',
               'margin' : '5px'
             });
           }, 250);
-          if(i === seq.length-1) {
-            $('#sprite').removeClass('animate');
+          if(i === seq.length-1) {//if last part of sequence
+            $('#sprite').removeClass('animate');// stop player animation
             buttons.css('display', 'block');//display buttons to allow input
-          status.css('font-family', '"Stalinist One", helvetica');
-            status.text('Repeat!');
+          status.css('font-family', '"Stalinist One", helvetica');//set status styling
+            status.text('Repeat!');//set status text
             setTimer(timerInterval);// set timer for input
           }
         }, i*seqInterval+seqInterval);
@@ -131,27 +131,27 @@ $(document).ready(function() {
         clearTimeout(playerTimeout);//stop timer
         inputs++; //increase input amount
         if(inputs % 3 === 0) seqInterval *= .9; // increases difficulty as rounds progress
-        if(event.type != 'keydown' && event.type != 'keyup'){
-          var btnId = $(this).parent().attr('id').split('').pop();
+        if(event.type != 'keydown' && event.type != 'keyup'){// if not a keypress
+          var btnId = $(this).parent().attr('id').split('').pop();// use button.parent for id
         }
         else {
-          var btnId = keyInputs.indexOf(event.key);
+          var btnId = keyInputs.indexOf(event.key);// else use event.key
         }
-        if(audioOn){
+        if(audioOn){//if audioOn
           console.log(btnId);
           sound = $('#sound-'+btnId).get(0);//get sound file
           sound.play(); // play sound
         }
         playerSeq.push(Number(btnId));//store button number in playerSeq
         if(checkSeq(sequence, playerSeq)){// if playerSeq matches sequence
-        if(event.type != 'keydown' && event.type != 'keyup'){
+        if(event.type != 'keydown' && event.type != 'keyup'){//set color of button to green if correct
           $(this).parent().css({
             'border' : '3px solid green',
             'margin' : '2px'
           });
         }
         else{
-          $('#btn-'+keyInputs.indexOf(event.key)).css({
+          $('#btn-'+keyInputs.indexOf(event.key)).css({//if using event.key
             'border' : '3px solid green',
             'margin' : '2px'
           });
@@ -170,21 +170,21 @@ $(document).ready(function() {
           setTimer(4000); //set timer between inputs
         }
         else{//if sequences do not match --> game over...
-          if(event.type != 'keydown' && event.type != 'keyup'){
-            $(this).parent().css({
+          if(event.type != 'keydown' && event.type != 'keyup'){// if incorrect btn
+            $(this).parent().css({//set color to red
                 'border' : '3px solid red',
                 'margin' : '2px'
               });
           }
           else{
-          $('#btn-'+keyInputs.indexOf(event.key)).css({
+          $('#btn-'+keyInputs.indexOf(event.key)).css({//if incorrect key pressed
             'border' : '3px solid red',
             'margin' : '2px'
           });
           }
           gameOver();
           resetGame();
-          playbtn.show('slow');
+          playbtn.show('slow');//allow player to start again
           return;
         }
       }
@@ -256,26 +256,25 @@ $(document).ready(function() {
       }
     });
     //*************NAV BUTTONS**************************
-    navbtn.click(function(){
-      console.log('nav clicked');
-      pages.css('display', 'none');
-      $('.'+$(this).text().toLowerCase()).fadeIn('slow');
-        $('#sprite').removeClass('animate');
-        clearTimeout(playerTimeout);
-        if(cheer){
+    navbtn.click(function(){//nav buttons switch between pages
+      pages.css('display', 'none');//hide all pages
+      $('.'+$(this).text().toLowerCase()).fadeIn('slow');//fade in current page
+        $('#sprite').removeClass('animate');//stop sprite animation
+        clearTimeout(playerTimeout);//stop timer
+        if(cheer){//stop cheer
           cheer.pause();
           cheer.currentTime = 0;
         }
-        if(song){
+        if(song){// stop song
           song.pause();
           song.currentTime = 0;
         }
-        resetGame();
-        status.text('');
+        resetGame();//reset game
+        status.text('');// reset status text
         playbtn.show('slow');
     });
     //***************DIFFICULTY BTN ************************
-    $('#diff').click(function(){
+    $('#diff').click(function(){// toggles difficulty
       console.log('diff clicked');
       diff++;
       if(diff >= difficulty.length) diff = 0;
@@ -295,8 +294,8 @@ $(document).ready(function() {
       }
     });
     //****************SET KEYBOARD INPUTS*******************
-    document.addEventListener('keydown', clickFunc);
-    document.addEventListener('keyup', function(event){
+    document.addEventListener('keydown', clickFunc);//handles key events
+    document.addEventListener('keyup', function(event){//key ups
       if(keyInputs.includes(event.key)){
         var index = keyInputs.indexOf(event.key);
         $('#btn-'+index).css({
@@ -306,13 +305,14 @@ $(document).ready(function() {
       }
     });
 
-    $('.setImage').keyup(function(event){
-      var index = $(this).attr('id').split('').pop();
-      var key = event.key;
-      keyInputs[index] = event.key;
-      if(key === ' ') key = 'Space';
-      $('.controlStatus').text('Button changed to - '+key);
+    $('.setImage').keyup(function(event){//sets user input to user defined keys
+      var index = $(this).attr('id').split('').pop();//gets button index
+      var key = event.key;//saves event.key to variable
+      keyInputs[index] = event.key;//inputs value to array
+      if(key === ' ') key = 'Space';//changes " " to "Space"
+      $('.controlStatus').text('Button changed to - '+key);// set control status text
     });
+    //************************Initialize Game***************************
     resetGame();
     buttons.css('display', 'none');//  make player press play to begin
   }

@@ -37,7 +37,7 @@ h2{
   margin: 0;
   font-size: 50px;
   font-family: 'Fruktur';
-  color: #aaf;
+  color: white;
 }
 header div img{
   /* Logo */
@@ -59,8 +59,7 @@ footer span{
   margin-right: 50px;
 }
 .headerul{
-  background:  linear-gradient(top, white, red);
-  background:  -webkit-linear-gradient(top, white, cadetblue);
+  background: #aaf;
 }
 .headerli{
   padding: 0 5px;
@@ -84,12 +83,11 @@ footer span{
 }
 .dropdown li:hover{
   color: white;
-  background: navy;
+  background: darkblue;
 }
 .headerli:hover{
   cursor: pointer;
-  d: linear-gradient(top, #aaf, #005);
-  background: -webkit-linear-gradient(top, slateblue, blue, cadetblue);
+  background: #00d;
 }
 .dropdown:hover .dropContent{
   display: block;

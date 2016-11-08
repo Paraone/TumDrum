@@ -17,12 +17,10 @@ $(document).ready(function() {
   var sound = null; // holds audio for playback controls
   var timerInterval = 4000; // interval to be used for player input
   var seqInterval = 774; // interval to be use for playback 155bpm tempo
-  var winPoint = 4; // player wins in 8 turns.
+  var winPoint = 4; // player wins in 4 turns.
   var diff = 0;//difficulty idex
   var difficulty = [4, 8, 12];//difficulty amount.
   var keyInputs = ['ArrowUp', 'ArrowLeft', 'ArrowDown', 'ArrowRight'];
-
-
 
   var getRand = function(min, max){ // gets random number from min to max
     var min = Math.ceil(min); //courtesy of MDN
@@ -126,8 +124,7 @@ $(document).ready(function() {
   }
 
   var clickFunc = function(event){
-        if(playerTurn){
-
+      if(playerTurn){
         clearTimeout(playerTimeout);//stop timer
         inputs++; //increase input amount
         if(inputs % 3 === 0) seqInterval *= .9; // increases difficulty as rounds progress

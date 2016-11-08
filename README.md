@@ -20,10 +20,10 @@ Approach:
 	
 	First steps where drawing out a wireframe of the design.
 
-	![](https://raw.githubusercontent.com/Paraone/TumDrum/master/imgs/wire1.jpg)
+![](https://raw.githubusercontent.com/Paraone/TumDrum/master/imgs/wire1.jpg)
 
 	![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
-	
+
 	Then a rough draft of the logic involved.
 
 	implementation of the logic using javascript.

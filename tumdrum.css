@@ -160,8 +160,8 @@ footer span{
   font-size: 20px;
   width: 130px;
   position: absolute;
-  top: 25%;
-  left: 20%;
+  top: 290px;
+  left: 25%;
 }
 #sideContent{
   margin-bottom: 10px;
@@ -178,11 +178,14 @@ footer span{
   font-family: 'Stalinist One', helvetica;
   position: absolute;
   left: 43%;
-  top: 20%;
+  top: 240px;
   font-size: 25pt;
   display: inline;
   color: lightblue;
   text-shadow: -2px 2px 0px black;
+}
+.controlStatus{
+
 }
 #playbtn{
   text-align: center;

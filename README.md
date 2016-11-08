@@ -28,10 +28,9 @@ Installation:
 
 unsolved problems:
 	
-	-Animations yet to be added.
-	-background song to be added.
-	-html and css still need some work
-	-
+	-Arrow keys are a little buggy...
+	-User set controls not implemented
+	-Couldn't find good dancing sprites for audience
 
 user stories:
 	
